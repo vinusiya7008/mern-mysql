@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { registerUser } from '../services/api';
+import './Register.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -28,47 +29,57 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          name="first_name"
-          type="text"
-          placeholder="First Name"
-          value={formData.first_name}
-          onChange={handleChange}
-        />
-        <input
-          name="last_name"
-          type="text"
-          placeholder="Last Name"
-          value={formData.last_name}
-          onChange={handleChange}
-        />
-        <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <button type="submit">Register</button>
-      </form>
+    <div className="register-container">
+      <div className="register-card">
+        <h2 className="register-title">Register</h2>
+        <p className="register-login-link">
+          You have an account? <Link to="/login">Login</Link>
+        </p>
+        {error && <p className="register-error">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <input
+            name="first_name"
+            type="text"
+            placeholder="First Name"
+            value={formData.first_name}
+            onChange={handleChange}
+            className="register-input"
+          />
+          <input
+            name="last_name"
+            type="text"
+            placeholder="Last Name"
+            value={formData.last_name}
+            onChange={handleChange}
+            className="register-input"
+          />
+          <input
+            name="username"
+            type="text"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleChange}
+            className="register-input"
+          />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="register-input"
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            className="register-input"
+          />
+          <button type="submit" className="register-button">Register</button>
+        </form>
+      </div>
     </div>
   );
 };

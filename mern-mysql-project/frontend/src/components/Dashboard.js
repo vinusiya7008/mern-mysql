@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Dashboard.css';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -13,10 +14,12 @@ const Dashboard = () => {
   if (!user) return null;
 
   return (
-    <div>
-      <h2>Welcome, {user.first_name} {user.last_name}</h2>
-      <p>Email: {user.email}</p>
-      <button onClick={handleLogout}>Logout</button>
+    <div className="dashboard-container">
+      <div className="dashboard-card">
+        <h2 className="dashboard-title">Welcome, {user.first_name} {user.last_name}</h2>
+        <p className="dashboard-email">{user.email}</p>
+        <button onClick={handleLogout} className="dashboard-logout">Logout</button>
+      </div>
     </div>
   );
 };
